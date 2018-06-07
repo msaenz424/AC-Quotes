@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_quotes.*
 
 class QuotesActivity : AppCompatActivity() {
 
-    var mQuotesAdapter: QuotesAdapter = QuotesAdapter(ArrayList())
+    private var mQuotesAdapter: QuotesAdapter = QuotesAdapter(ArrayList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

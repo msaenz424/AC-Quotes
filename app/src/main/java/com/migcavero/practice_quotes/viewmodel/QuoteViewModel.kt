@@ -1,18 +1,16 @@
 package com.migcavero.practice_quotes.viewmodel
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.migcavero.practice_quotes.model.Quote
+import com.migcavero.practice_quotes.model.QuotesRepository
 
 class QuoteViewModel: ViewModel() {
-    private val mLiveQuotes: MutableLiveData<List<Quote>> = MutableLiveData()
+    private var mLiveQuotes: LiveData<List<Quote>>
+    private val mQuotesRepository: QuotesRepository = QuotesRepository()
 
     init {
-        val quoteList = ArrayList<Quote>()
-        quoteList.add(Quote("quote 1", "author 1"))
-        quoteList.add(Quote("quote 2", "author 2"))
-        mLiveQuotes.value = quoteList
+        mLiveQuotes = mQuotesRepository.getQuotesFromWeb()
     }
 
     fun getQuotes(): LiveData<List<Quote>>{
